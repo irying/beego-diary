@@ -1,0 +1,14 @@
+## 配色方案GO服务端
+
+### mysql建表：
+create user IF NOT EXISTS 'color_scheme'@'%' identified BY 'rob097Td^#';
+grant all ON color_schemes.* TO 'color_scheme'@'%';
+
+### CREATE TABLE
+> CREATE TABLE `schemes` (`id` int(11) NOT NULL AUTO_INCREMENT,`name` varchar(100) DEFAULT NULL COMMENT '方案名称',`apply_page` varchar(45) DEFAULT NULL COMMENT '页面类型：\n\ncover封面页，table目录页、transition过渡页、text正文页、end结束页',`levels` int(11) DEFAULT NULL COMMENT '衬底层级数量',`style` varchar(45) DEFAULT NULL COMMENT '风格用途',`create_time` int(11) DEFAULT NULL COMMENT '创建时间10位时间戳',`update_time` int(11) DEFAULT NULL,`template_id` varchar(45) NOT NULL,`background` int(11) DEFAULT NULL,`substrate` int(11) DEFAULT NULL,`scheme_id` varchar(45) NOT NULL,PRIMARY KEY (`id`),UNIQUE KEY `id_UNIQUE` (`id`)) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
+
+> CREATE TABLE `schemes_color` (  `id` int(11) NOT NULL AUTO_INCREMENT,  `scheme_id` varchar(45) DEFAULT NULL,  `template_id` varchar(45) DEFAULT NULL,  `base` varchar(45) DEFAULT NULL,  `contrast` varchar(45) DEFAULT NULL,  `type` varchar(45) DEFAULT NULL,  `item_key` varchar(45) DEFAULT NULL,  PRIMARY KEY (`id`)) ENGINE=MyISAM AUTO_INCREMENT=132 DEFAULT CHARSET=utf8mb4;
+
+> CREATE TABLE `schemes_items` (  `scheme_id` varchar(45) NOT NULL COMMENT '配色方案的ID',  `level` tinyint(1) DEFAULT NULL COMMENT '层级',  `background` tinyint(1) DEFAULT NULL COMMENT '背景色',  `decoration` tinyint(1) DEFAULT NULL COMMENT '各层装饰色数量',  `diagram_series` tinyint(1) DEFAULT NULL COMMENT '各层图示系列色数量',  `title` tinyint(1) DEFAULT NULL COMMENT '各层标题色数量',  `directitem` tinyint(1) DEFAULT NULL,  `template_id` varchar(20) NOT NULL,  `item_key` varchar(45) DEFAULT NULL,  `id` int(11) NOT NULL AUTO_INCREMENT,  PRIMARY KEY (`id`),  KEY `schmesId_idx` (`scheme_id`)) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4;
+
+> CREATE TABLE `schemes_json` (  `scheme_id` varchar(45) NOT NULL,  `json` longtext NOT NULL,  PRIMARY KEY (`scheme_id`)) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='存放配色方案原始数据';

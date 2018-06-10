@@ -1,0 +1,11 @@
+/src/api/vendor
+/bin
+/pkg
+/src/api/api.exe
+/src/api/api.exe~
+/src/api/logs
+/server.md
+/src/api/lastupdate.tmp
+
+lastupdate.tmp
+src/api/routers/commentsRouter___________________Users_kyrie_color_schemes_src_api_controllers.go
